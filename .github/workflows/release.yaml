@@ -1,0 +1,17 @@
+name: "Create a formally tagged release upon creating a targeted pull request to 'main' branch"
+on:
+ push:
+  branches:
+   - main
+jobs:
+    validate-tags:
+        environment: RELEASE
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: Create release
+              uses: heyitsDani/reusable-workflows/.github/actions/release_semantic_tag@v0.1.0
+              with:
+                    GIT_TOKEN: ${{ secrets.GIT_PAT}}
+                    GH_REPO: ${{ github.repository}}
+                    PR_SHA: ${{github.sha}}
