@@ -1,8 +1,18 @@
 name: "Create a formally tagged release upon creating a targeted pull request to 'main' branch"
+run-name: "${{github.event.inputs.Environment}}; ${{ github.ref}}; ${{github.triggering_actor}};"
+
 on:
- pull_request:
-  branches:
-   - main
+ workflow_dispatch:
+    inputs:
+      Environment:
+        type: choice
+        description: "Select Deployment Environment"
+        options:
+        - PROD
+        - UAT
+        - SIT
+        - DEV
+        
 jobs:
     validate-tags:
         environment: RELEASE
@@ -14,4 +24,4 @@ jobs:
               with:
                     PAT_TOKEN: ${{ secrets.GIT_PAT}}
                     REPO_URL: ${{ github.repositoryUrl}}
-                    PR_SHA: ${{github.event.pull_request.head.sha}}
+                    PR_SHA: ${{github.sha}}
