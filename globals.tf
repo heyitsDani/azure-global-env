@@ -5,6 +5,7 @@ variable "location_codes" {
         # Americas
         eastus = "EUS" /**/
         eastus2 = "EUS2" /**/
+        eastus3 = "EUS3" /* To be released in 2027 */ 
         centralus = "CUS" /**/
         northcentralus = "NCUS" /**/
         southcentralus = "SCUS" /**/
