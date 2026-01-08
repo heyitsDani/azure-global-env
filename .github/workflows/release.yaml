@@ -14,14 +14,10 @@ on:
         - DEV
         
 jobs:
-    validate-tags:
-        environment: RELEASE
-        runs-on: ubuntu-latest
-    
-        steps:
-            - name: Create release
-              uses: heyitsDani/reusable-workflows/.github/actions/release_semantic_tag@feat/releases
-              with:
-                    PAT_TOKEN: ${{ secrets.GIT_PAT}}
-                    REPO_URL: ${{ github.repositoryUrl}}
-                    PR_SHA: ${{github.sha}}
+    validate-tags:    
+        uses: heyitsDani/reusable-workflows/.github/workflows/release_semantic_tag.yaml@main # switch to semantically versioned releases
+        with:
+          REPO_URL: ${{ github.repositoryUrl}}
+          PR_SHA: ${{github.sha}}
+        secrets:
+           PAT_TOKEN: ${{ secrets.GIT_PAT}}
