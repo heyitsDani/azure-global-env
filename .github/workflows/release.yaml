@@ -12,6 +12,9 @@ on:
         - UAT
         - SIT
         - DEV
+      
+permissions:
+  contents: write
         
 jobs:
     validate-tags:    
