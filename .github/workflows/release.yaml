@@ -22,5 +22,10 @@ jobs:
         with:
           REPO_URL: ${{ github.repositoryUrl}}
           PR_SHA: ${{github.sha}}
+          extra_plugins: |
+            @semantic-release/commit-analyzer
+            @semantic-release/release-notes-generator
+            @semantic-release/github
+            @semantic-release/git
         secrets:
            PAT_TOKEN: ${{ secrets.GIT_PAT}}
