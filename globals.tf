@@ -73,8 +73,8 @@ variable "environment_codes" {
     type        = map(string)
     default     = {
         PROD = "P" /* highest possible environment */
-        UAT = "U"
-        SIT = "S"
+        STG = "S"
+        TST = "T"
         DEV = "D" /* lowest possible environment */
     }
 }
